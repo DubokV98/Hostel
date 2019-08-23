@@ -1,5 +1,7 @@
 package HostelProject.Students;
 
+import HostelProject.Hostel.Room;
+
 public class Student extends Human {
     int course; //Курс обучения
     boolean study;
@@ -7,8 +9,9 @@ public class Student extends Human {
     int remarks; // Замечания
     int badgeNumber; //Номер пропуска
     boolean wardenFloor;
+    String condition; // Состояние студента
 
-    public Student(String name, boolean study, boolean payment, int remarks, int badgeNumber, boolean wardenFloor)
+    public Student(String name, boolean study, boolean payment, int remarks, int badgeNumber, boolean wardenFloor , String condition)
     {
         super(name);
         this.study = study;
@@ -16,6 +19,7 @@ public class Student extends Human {
         this.remarks = remarks;
         this.badgeNumber = badgeNumber;
         this.wardenFloor = wardenFloor;
+        this.condition = condition;
     }
 
     public int getCourse() {
@@ -54,15 +58,24 @@ public class Student extends Human {
         return badgeNumber;
     }
 
-    public void setBadgeNumber(int badgeNumber) {
-        this.badgeNumber = badgeNumber;
-    }
-
     public boolean isWardenFloor() {
         return wardenFloor;
     }
 
     public void setWardenFloor(boolean wardenFloor) {
         this.wardenFloor = wardenFloor;
+    }
+
+    public String getCondition() {
+        return condition;
+    }
+
+    public void setCondition(String condition) {
+        this.condition = condition;
+    }
+
+    public void danceOnRoom(Room room)
+    {
+
     }
 }
