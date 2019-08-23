@@ -1,5 +1,5 @@
 package HostelProject.Hostel;
 
-public abstract class Hostel {
-
+public class Hostel {
+    int hostelNumber;
 }

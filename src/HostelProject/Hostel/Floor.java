@@ -1,6 +1,5 @@
 package HostelProject.Hostel;
 
-public class Floor extends Hostel {
+public class Floor{
     int floorNumber;
-    int numberStudent;
 }
