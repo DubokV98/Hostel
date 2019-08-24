@@ -2,7 +2,7 @@ package HostelProject.Students;
 
 public abstract class Human {
 
-    String name;
+    protected String name;
 
     public Human(){}
 

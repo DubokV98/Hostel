@@ -11,6 +11,18 @@ public class Warden extends Student implements Administration {
         super(name, study, payment, remarks, badgeNumber, wardenFloor, condition);
     }*/
 
+   public Warden(Student student)
+   {
+        this.name = student.getName();
+        this.course = student.getCourse();
+        this.study = student.isStudy();
+        this.payment = student.isPayment();
+        this.remarks = student.getRemarks();
+        this.badgeNumber = student.getBadgeNumber();
+        this.wardenFloor = true;
+        this.condition = student.getCondition();
+   }
+
     public void roomWalk(Floor floor){
 
     }//Обход комнат

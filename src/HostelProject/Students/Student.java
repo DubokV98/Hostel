@@ -3,6 +3,7 @@ package HostelProject.Students;
 import HostelProject.Hostel.Room;
 
 public class Student extends Human {
+
     protected int course; //Курс обучения
     protected boolean study;
     protected boolean payment;
@@ -13,13 +14,25 @@ public class Student extends Human {
 
     public static class Builder
     {
-        private int course = 1;
+        protected String name = "";
+        protected int course = 1;
         private boolean study = true;
         private boolean payment = false;
         private int remarks = 0;
         private String badgeNumber = "";
         private boolean wardenFloor = false;
         private String condition = "Normal";
+
+        public Builder(String name)
+        {
+            this.name = name;
+        }
+
+        public Builder builderName(String name)
+        {
+            this.name = name;
+            return this;
+        }
 
         public Builder buildCourse (int course)
         {
@@ -57,6 +70,11 @@ public class Student extends Human {
             return this;
         }
 
+        public Builder ()
+        {
+
+        }
+
         public Builder buildCondition (String condition)
         {
             this.condition = condition;
@@ -74,6 +92,7 @@ public class Student extends Human {
 
     public Student (Builder builder)
     {
+        super(builder.name);
         course = builder.course;
         study = builder.study;
         payment = builder.payment;
