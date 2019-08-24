@@ -4,6 +4,8 @@ public abstract class Human {
 
     String name;
 
+    public Human(){}
+
     public Human(String name)
     {
         this.name = name;

@@ -16,8 +16,15 @@ public class Commandant extends Human implements Administration {
 
     }
     //Выселять
-    public void eviction(Hostel hostel, ArrayList <Student> students, Security security){
+    public void eviction(Hostel hostel, ArrayList <Student> students, Security security)
+    {
+        for (Student student:students)
+        {
+            if (student.getCourse() > 4 || student.getRemarks() > 1)
+            {
+                security.evictionAssistance(student);
+            }
+        }
 
-        security.evictionAssistance();
     }
 }

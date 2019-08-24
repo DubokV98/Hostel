@@ -11,7 +11,7 @@ public class Security extends Human implements Administration {
     }
 
     public void badgeCheck(Student student){
-        if(student.getBadgeNumber()==0)
+        if(student.getBadgeNumber()=="")
         {
             System.out.println("Student does not belong to the hostel - Security");
         }
@@ -20,9 +20,9 @@ public class Security extends Human implements Administration {
             System.out.println("Student belongs to the hostel - Security");
         }
     }//проверка студентов на принадлежность к общежитию
-    public void evictionAssistance()
+    public void evictionAssistance(Student student)
     {
-
+        System.out.println("The student "+student.getName()+ "was evicted - Security");
     }//помощь в выселении
 
 }

@@ -5,9 +5,9 @@ import java.util.ArrayList;
 public class Hostel {
 
     private ArrayList <Floor> floors;
-    int hostelNumber;
+    String hostelNumber;
 
-    public Hostel(int hostelNumber) {
+    public Hostel(String hostelNumber) {
         this.floors = new ArrayList<>();
         this.hostelNumber = hostelNumber;
     }
@@ -20,11 +20,11 @@ public class Hostel {
         this.floors = floors;
     }
 
-    public int getHostelNumber() {
+    public String getHostelNumber() {
         return hostelNumber;
     }
 
-    public void setHostelNumber(int hostelNumber) {
+    public void setHostelNumber(String hostelNumber) {
         this.hostelNumber = hostelNumber;
     }
 }
