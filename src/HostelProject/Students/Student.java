@@ -8,7 +8,7 @@ public class Student extends Human {
     protected boolean study;
     protected boolean payment;
     protected int remarks; // Замечания
-    protected String badgeNumber; //Номер пропуска
+    protected int badgeNumber; //Номер пропуска
     protected  boolean wardenFloor;
     protected  String condition; // Состояние студента
 
@@ -17,9 +17,9 @@ public class Student extends Human {
         protected String name = "";
         protected int course = 1;
         private boolean study = true;
-        private boolean payment = false;
+        private boolean payment = true;
         private int remarks = 0;
-        private String badgeNumber = "";
+        private int badgeNumber = 0;
         private boolean wardenFloor = false;
         private String condition = "Normal";
 
@@ -58,7 +58,7 @@ public class Student extends Human {
             return this;
         }
 
-        public Builder buildBadgeNumber (String badgeNumber)
+        public Builder buildBadgeNumber (int badgeNumber)
         {
             this.badgeNumber = badgeNumber;
             return this;
@@ -118,7 +118,7 @@ public class Student extends Human {
         return remarks;
     }
 
-    public String getBadgeNumber() {
+    public int getBadgeNumber() {
         return badgeNumber;
     }
 
@@ -133,5 +133,33 @@ public class Student extends Human {
     public void danceOnRoom(Room room)
     {
 
+    }
+
+    public void setCourse(int course) {
+        this.course = course;
+    }
+
+    public void setStudy(boolean study) {
+        this.study = study;
+    }
+
+    public void setPayment(boolean payment) {
+        this.payment = payment;
+    }
+
+    public void setRemarks(int remarks) {
+        this.remarks = remarks;
+    }
+
+    public void setBadgeNumber(int badgeNumber) {
+        this.badgeNumber = badgeNumber;
+    }
+
+    public void setWardenFloor(boolean wardenFloor) {
+        this.wardenFloor = wardenFloor;
+    }
+
+    public void setCondition(String condition) {
+        this.condition = condition;
     }
 }

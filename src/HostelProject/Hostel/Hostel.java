@@ -1,9 +1,12 @@
 package HostelProject.Hostel;
 
+import HostelProject.Students.Student;
+
 import java.util.ArrayList;
 
 public class Hostel {
 
+    public static final int NUMBER_OF_FLOOR=3;//Количество этажей.
     private ArrayList <Floor> floors;
     String hostelNumber;
 
@@ -27,4 +30,16 @@ public class Hostel {
     public void setHostelNumber(String hostelNumber) {
         this.hostelNumber = hostelNumber;
     }
+
+    public ArrayList<Student> allStudentInRoom (Hostel hostel)
+    {
+        ArrayList <Student> result = new ArrayList<>();
+        for (Floor floor:hostel.getFloors()) {
+            for (Room room:floor.getRooms()) {
+                result.addAll(room.getStudents());
+            }
+        }
+        return result;
+    }
+
 }

@@ -9,61 +9,64 @@ import java.util.ArrayList;
 
 public class Initialize {
 
-    public ArrayList<Student> setStudent() {
+    public Hostel initializeHostel()
+    {
+        Hostel hostel = new Hostel("Heavenly place");
+        for (int i = 0; i < Hostel.NUMBER_OF_FLOOR; i++)
+        {
+            hostel.getFloors().add(new Floor(i));
+        }
+        int numberRoom = 100;
+        for (Floor floor:hostel.getFloors()) {
+            for(int i = 0; i < Floor.NUMBER_OF_ROOMS; i++)
+            {
+                floor.getRooms().add(new Room(0,"Good",numberRoom+i));
+                System.out.println(floor.getRooms().get(i).getRoomNumber());
+            }
+            numberRoom+=100;
+        }
+        return hostel;
+    }
+
+    public ArrayList<Student> createNewStudentArray() {
+
         ArrayList<Student> students = new ArrayList<>();
-        Student student = new Student.Builder("ASD")
-                .builderName("Alesha")
+
+        Student student = new Student.Builder()
+                .builderName("Dubok Vladislav")
+                .buildStudent();
+
+        Student student1 = new Student.Builder()
+                .builderName("Shumin Alexey")
+                .buildPayment(false)
+                .buildStudent();
+
+        Student student2 = new Student.Builder()
+                .builderName("Veelka Olga")
+                .buildStudent();
+
+        Student student3 = new Student.Builder()
+                .builderName("Veelka Matvey")
                 .buildCourse(2)
-                .buildStudy(true)
-                .buildPayment(true)
-                .buildRemarks(0).buildBadgeNumber("1-123")
-                .buildWardenFloor(false)
                 .buildStudent();
-        Student student1 = new Student.Builder("ASD")
-                .builderName("Vlad")
+        Student student4 = new Student.Builder()
+                .builderName("Snopkov Vadim")
                 .buildCourse(3)
-                .buildStudy(true)
-                .buildPayment(true)
-                .buildRemarks(0).buildBadgeNumber("1-123")
-                .buildWardenFloor(false)
                 .buildStudent();
-        Student student2 = new Student.Builder("ASD")
-                .builderName("Kvadrat")
+        Student student5 = new Student.Builder()
+                .builderName("Shumay Serhey")
                 .buildCourse(4)
-                .buildStudy(true)
-                .buildPayment(true)
-                .buildRemarks(0).buildBadgeNumber("1-123")
-                .buildWardenFloor(false)
                 .buildStudent();
+
         students.add(student);
         students.add(student1);
         students.add(student2);
-        for (Student studentki:students) {
-            System.out.println("Studentki name"+studentki.getName());
-        }
+        students.add(student3);
+        students.add(student4);
+        students.add(student5);
+
         return students;
     }
 
-    public ArrayList<Floor> setFloor()
-    {
-        ArrayList<Floor> floors = new ArrayList<>();
-        Floor floor = new Floor(1);
-        floor.setRooms(setRoom());
 
-        return floors;
-    }
-    public ArrayList<Room> setRoom()
-    {
-        ArrayList<Room> rooms = new ArrayList<>();
-        Room room = new Room(setStudent(),3,"Normal",123);
-        rooms.add(room);
-        System.out.println("Rooms size = " + rooms.size());
-        return rooms;
-    }
-
-   /* public Hostel setHostel()
-    {
-        Hostel hostel = new Hostel()
-        return
-    }*/
 }

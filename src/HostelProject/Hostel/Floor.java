@@ -6,8 +6,9 @@ import java.util.ArrayList;
 
 public class Floor{
 
+    public static final int NUMBER_OF_ROOMS=3;//Количество комнат на этаже.
     ArrayList<Room> rooms;
-    int floorNumber;
+    int floorNumber;//Номер этажа
 
     public Floor(int floorNumber) {
         this.rooms = new ArrayList<>();
@@ -29,4 +30,5 @@ public class Floor{
     public void setFloorNumber(int floorNumber) {
         this.floorNumber = floorNumber;
     }
+
 }

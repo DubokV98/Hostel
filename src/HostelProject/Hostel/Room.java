@@ -4,15 +4,18 @@ import HostelProject.Students.Student;
 
 import java.util.ArrayList;
 
-public class Room{
+public class Room {
 
-    ArrayList <Student> students;//Агрегация
-    int numberStudent;//Количество студентов
+    public static final int NUMBER_OF_STUDENT = 3;//Количество студентов максимальное
+    ArrayList<Student> students;//Агрегация
+    int numberStudent;//Количество студентов в комнате на данный момент
     String condition; // Состояние комнаты, грязная и т.д.
-    int roomNumber;
+    int roomNumber;//Номер комнаты
 
-    public Room(ArrayList<Student> students, int numberStudent, String condition, int roomNumber) {
-        this.students = students;
+    public Room(){}
+
+    public Room(int numberStudent, String condition, int roomNumber) {
+        students = new ArrayList<>();
         this.numberStudent = numberStudent;
         this.condition = condition;
         this.roomNumber = roomNumber;
@@ -48,5 +51,19 @@ public class Room{
 
     public void setRoomNumber(int roomNumber) {
         this.roomNumber = roomNumber;
+    }
+
+    public Room getRoomByNumber(Hostel hostel, int numberRoom)
+    {
+        Room rooming = new Room();
+        for (Floor floor : hostel.getFloors()) {
+            for (Room room : floor.getRooms()) {
+                if (room.getRoomNumber() == numberRoom)
+                {
+                    return room;
+                }
+            }
+        }
+        return rooming;
     }
 }

@@ -10,8 +10,7 @@ public class Main {
     public static void main(String [] args)
     {
         HostelLife hostelLife = new HostelLife();
-        hostelLife.oneDayOnHostel();
-        hostelLife.showCondition();
+        hostelLife.oneTimeOnHostel();
 
     }
 }
