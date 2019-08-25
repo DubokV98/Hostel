@@ -130,9 +130,9 @@ public class Student extends Human {
         return condition;
     }
 
-    public void danceOnRoom(Room room)
+    public void livesOnRoom()
     {
-
+        System.out.println(this.getName() + " lives on room № "+ this.getBadgeNumber());
     }
 
     public void setCourse(int course) {

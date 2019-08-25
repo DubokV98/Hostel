@@ -15,6 +15,8 @@ public class Floor{
         this.floorNumber = floorNumber;
     }
 
+    public Floor(){}
+
     public ArrayList<Room> getRooms() {
         return rooms;
     }

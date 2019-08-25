@@ -1,5 +1,6 @@
 package HostelProject.Hostel;
 
+import HostelProject.Administrations.Warden;
 import HostelProject.Students.Student;
 
 import java.util.ArrayList;
@@ -31,10 +32,10 @@ public class Hostel {
         this.hostelNumber = hostelNumber;
     }
 
-    public ArrayList<Student> allStudentInRoom (Hostel hostel)
+    public ArrayList<Student> allStudentInRoom ()
     {
         ArrayList <Student> result = new ArrayList<>();
-        for (Floor floor:hostel.getFloors()) {
+        for (Floor floor:this.getFloors()) {
             for (Room room:floor.getRooms()) {
                 result.addAll(room.getStudents());
             }
@@ -42,4 +43,32 @@ public class Hostel {
         return result;
     }
 
+    public ArrayList<Room> allRoomInHostel ()
+    {
+        ArrayList <Room> result = new ArrayList<>();
+        for (Floor floor:this.getFloors()) {
+            result.addAll(floor.getRooms());
+        }
+        return result;
+    }
+
+    public ArrayList<Floor> allFloorInHostel ()
+    {
+        ArrayList <Floor> floorList = new ArrayList<>();
+        floorList = this.getFloors();
+        return floorList;
+    }
+    public Floor floorWhereWardenLive(int numberRoom)
+    {
+        Floor floor = new Floor();
+        for (Floor currentFlor:this.getFloors()) {
+            for (Room room:currentFlor.getRooms()) {
+                if(numberRoom == room.getRoomNumber())
+                {
+                    return currentFlor;
+                }
+            }
+        }
+        return floor;
+    }
 }

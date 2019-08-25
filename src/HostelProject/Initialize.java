@@ -1,5 +1,6 @@
 package HostelProject;
 
+import HostelProject.Administrations.Warden;
 import HostelProject.Hostel.Floor;
 import HostelProject.Hostel.Hostel;
 import HostelProject.Hostel.Room;
@@ -20,7 +21,7 @@ public class Initialize {
         for (Floor floor:hostel.getFloors()) {
             for(int i = 0; i < Floor.NUMBER_OF_ROOMS; i++)
             {
-                floor.getRooms().add(new Room(0,"Good",numberRoom+i));
+                floor.getRooms().add(new Room(0,"Badly",numberRoom+i));
                 System.out.println(floor.getRooms().get(i).getRoomNumber());
             }
             numberRoom+=100;
@@ -55,6 +56,7 @@ public class Initialize {
                 .buildStudent();
         Student student5 = new Student.Builder()
                 .builderName("Shumay Serhey")
+                .buildCondition("Drunk")
                 .buildCourse(4)
                 .buildStudent();
 
@@ -68,5 +70,31 @@ public class Initialize {
         return students;
     }
 
+    //Необходимо переделать параметры, сюда нао получать этажи.
+    public ArrayList<Warden> createNewWarden(Hostel hostel)
+    {
+        int check = 0;
+        Warden warden;
+        ArrayList<Warden> wardens = new ArrayList<>();
+        for (Floor floor:hostel.getFloors()) {
+            check = 0;
+            for (Room room:floor.getRooms()) {
+                for (Student student:room.getStudents()) {
+                    if(student.isWardenFloor())
+                    {
+                        check++;
+                        break;
+                    }
+                }
+            }
+            if(check==0&&!floor.getRooms().get(0).getStudents().isEmpty())
+            {
+                floor.getRooms().get(0).getStudents().get(0).setWardenFloor(true);
+                warden = new Warden(floor.getRooms().get(0).getStudents().get(0));
+                wardens.add(warden);
+            }
+        }
 
+        return wardens;
+    }
 }

@@ -14,24 +14,24 @@ public class Commandant extends Human implements Administration {
         super(name);
     }
     //Заселение
-    public void populate(Hostel hostel, ArrayList <Student> students){
+    public void populate(Hostel hostel, ArrayList <Student> studentsList){
 
         int i = 0;
         for (Floor floor:hostel.getFloors()) {
             for (Room room:floor.getRooms()) {
                 for (int currentNumberStudents =  room.getNumberStudent(); currentNumberStudents < Room.NUMBER_OF_STUDENT; currentNumberStudents++)
                 {
-                    if(i==students.size())
+                    if(i==studentsList.size())
                     {
                         System.out.println("Студенты были заселены!");
                         return;
                     }
                     else {
-                        students.get(i).setBadgeNumber(room.getRoomNumber());
-                        room.getStudents().add(students.get(i));
+                        studentsList.get(i).setBadgeNumber(room.getRoomNumber());
+                        room.getStudents().add(studentsList.get(i));
                         int nowNumberStudents = currentNumberStudents + 1;
                         room.setNumberStudent(nowNumberStudents);
-                        System.out.println("Студент был заселен в комнату номер: " + "Номер комнаты" + room.getRoomNumber() + "Картачка" + students.get(i).getBadgeNumber() + "Количество в комнате" + room.getNumberStudent());
+                        System.out.println("Студент был заселен в комнату номер: " + "Номер комнаты" + room.getRoomNumber() + "Картачка" + studentsList.get(i).getBadgeNumber() + "Количество в комнате" + room.getNumberStudent());
                         i++;
                     }
                 }
@@ -53,10 +53,10 @@ public class Commandant extends Human implements Administration {
         }
     }
     //Возвращаем лист залетных
-    public ArrayList<Student> checkPaymentAndRemarks (ArrayList <Student> students)
+    public ArrayList<Student> checkPaymentAndRemarks (ArrayList <Student> studentsList)
     {
         ArrayList <Student> delinquentStudent = new ArrayList<>();
-        for (Student currentStudent : students) {
+        for (Student currentStudent : studentsList) {
             if (!currentStudent.isPayment() || currentStudent.getRemarks() > 1) {
                 delinquentStudent.add(currentStudent);
             }

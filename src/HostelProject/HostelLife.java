@@ -2,6 +2,7 @@ package HostelProject;
 
 import HostelProject.Administrations.Commandant;
 import HostelProject.Administrations.Security;
+import HostelProject.Administrations.Warden;
 import HostelProject.Hostel.Floor;
 import HostelProject.Hostel.Hostel;
 import HostelProject.Hostel.Room;
@@ -10,44 +11,49 @@ import HostelProject.Students.Student;
 import java.util.ArrayList;
 
 public class HostelLife {
-    ArrayList<Student> students;
+    ArrayList<Student> studentsList;
+    ArrayList<Room> roomsList;
+    ArrayList<Warden> wardensList;
     Commandant commandant;
     Security security;
     Hostel hostel;
+    Floor floor;
+    Room room;
 
     public void oneTimeOnHostel() {
-        Room room = new Room();
+        room = new Room();
         Initialize initialize = new Initialize();
-        students = new ArrayList<Student>();
         commandant = new Commandant("Nikolay Petrovich Gospodievich");
         security = new Security("Ivan Nicolaevich Vishibalo");
         hostel = initialize.initializeHostel();
-        students = initialize.createNewStudentArray();
+        studentsList = initialize.createNewStudentArray();
 
-        commandant.populate(hostel,students);//Заселение
+        commandant.populate(hostel, studentsList);//Заселение
 
-        students = hostel.allStudentInRoom(hostel);
-        security.badgeCheck(students.get(0));//Проверка на входе 1 студента
+        studentsList = hostel.allStudentInRoom();
+        security.badgeCheck(studentsList);//Проверка на входе студентов
 
+        //Проживание студентов
+        for(Student student:studentsList) {
+            student.livesOnRoom();
+        }
 
-        students = commandant.checkPaymentAndRemarks(hostel.allStudentInRoom(hostel));//Проверка на оплату и замечания
-        if(!students.isEmpty()) {
-            for (Student student: students) {
+        studentsList = commandant.checkPaymentAndRemarks(hostel.allStudentInRoom());//Проверка на оплату и замечания
+        if(!studentsList.isEmpty()) {
+            for (Student student: studentsList) {
                 room = room.getRoomByNumber(hostel,student.getBadgeNumber());
                 commandant.eviction(room,student,security);
             }
         }
-    }
 
-    public void showCondition() {
-        int i = 0;
-        for (Floor floor : hostel.getFloors()) {
-            for (Room room:floor.getRooms()) {
-                for (Student student:room.getStudents()) {
-                    System.out.println("3 foreach and name student"+student.getName());
-                }
+        //создание старост
+        roomsList = hostel.allRoomInHostel();
+        wardensList = initialize.createNewWarden(hostel);
 
-            }
+        //Проверка состояния старостой (комнат и студентов)
+        for (Warden warden:wardensList) {
+            floor = hostel.floorWhereWardenLive(warden.getBadgeNumber());
+            warden.roomWalkAndCheckCondition(floor);
         }
     }
 }
