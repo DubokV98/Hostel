@@ -31,7 +31,7 @@ public class Commandant extends Human{
                         room.getStudents().add(studentsList.get(i));
                         int nowNumberStudents = currentNumberStudents + 1;
                         room.setNumberStudent(nowNumberStudents);
-                        System.out.println("Room №" + room.getRoomNumber()+ "Number of students per room - " + room.getNumberStudent());
+                        System.out.println("Room № " + room.getRoomNumber()+ " Number of students per room - " + room.getNumberStudent());
                         i++;
                     }
                 }
@@ -46,9 +46,9 @@ public class Commandant extends Human{
         delinquentStudent.setBadgeNumber(0);
         room.getStudents().remove(delinquentStudent);
         room.setNumberStudent(room.getNumberStudent()-1);
-        System.out.println("Eviction student"+delinquentStudent.getName()+ "Current number of students per room "+room.getNumberStudent());
+        System.out.println("Eviction student "+delinquentStudent.getName()+ " Current number of students per room "+room.getNumberStudent());
         for (Student student:room.getStudents()) {
-            System.out.println("Student on the room:"+student.getName());
+            System.out.println("Student on the room: "+student.getName());
         }
     }
 
