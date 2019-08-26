@@ -1,16 +1,16 @@
 package HostelProject.Students;
 
-import HostelProject.Hostel.Room;
+import java.util.Objects;
 
 public class Student extends Human {
 
-    protected int course; //Курс обучения
+    protected int course;
     protected boolean study;
     protected boolean payment;
-    protected int remarks; // Замечания
-    protected int badgeNumber; //Номер пропуска
+    protected int remarks;
+    protected int badgeNumber;
     protected  boolean wardenFloor;
-    protected  String condition; // Состояние студента
+    protected  String condition;
 
     public static class Builder
     {
@@ -132,7 +132,9 @@ public class Student extends Human {
 
     public void livesOnRoom()
     {
-        System.out.println(this.getName() + " lives on room № "+ this.getBadgeNumber());
+        System.out.println(name + " lives on room № "+ badgeNumber);
+        course++;
+        remarks=0;
     }
 
     public void setCourse(int course) {
@@ -161,5 +163,40 @@ public class Student extends Human {
 
     public void setCondition(String condition) {
         this.condition = condition;
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "course=" + course +
+                ", study=" + study +
+                ", payment=" + payment +
+                ", remarks=" + remarks +
+                ", badgeNumber=" + badgeNumber +
+                ", wardenFloor=" + wardenFloor +
+                ", condition='" + condition + '\'' +
+                ", name='" + name + '\'' +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Student)) return false;
+        if (!super.equals(o)) return false;
+        Student student = (Student) o;
+        return course == student.course &&
+                study == student.study &&
+                payment == student.payment &&
+                remarks == student.remarks &&
+                badgeNumber == student.badgeNumber &&
+                wardenFloor == student.wardenFloor &&
+                Objects.equals(condition, student.condition);
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(super.hashCode(), course, study, payment, remarks, badgeNumber, wardenFloor, condition);
     }
 }

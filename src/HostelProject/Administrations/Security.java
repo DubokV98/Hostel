@@ -5,8 +5,7 @@ import HostelProject.Students.Student;
 
 import java.util.ArrayList;
 
-public class Security extends Human implements Administration {
-
+public class Security extends Human{
 
     public Security(String name) {
         super(name);
@@ -24,10 +23,10 @@ public class Security extends Human implements Administration {
                 System.out.println("Student "+student.getName()+" belongs to the hostel - Security");
             }
         }
-    }//проверка студентов на принадлежность к общежитию
+    }
     public void evictionAssistance(Student student) {
 
-        System.out.println("The student "+student.getName()+ "was evicted - Security");
-    }//помощь в выселении
+        System.out.println("The student "+student.getName()+ " was evicted - Security");
+    }
 
 }

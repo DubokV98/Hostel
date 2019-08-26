@@ -22,7 +22,6 @@ public class Initialize {
             for(int i = 0; i < Floor.NUMBER_OF_ROOMS; i++)
             {
                 floor.getRooms().add(new Room(0,"Badly",numberRoom+i));
-                System.out.println(floor.getRooms().get(i).getRoomNumber());
             }
             numberRoom+=100;
         }
@@ -70,7 +69,6 @@ public class Initialize {
         return students;
     }
 
-    //Необходимо переделать параметры, сюда нао получать этажи.
     public ArrayList<Warden> createNewWarden(Hostel hostel)
     {
         int check = 0;

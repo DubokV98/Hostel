@@ -1,14 +1,13 @@
 package HostelProject.Hostel;
 
-import HostelProject.Administrations.Warden;
-
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Floor{
 
-    public static final int NUMBER_OF_ROOMS=3;//Количество комнат на этаже.
-    ArrayList<Room> rooms;
-    int floorNumber;//Номер этажа
+    public static final int NUMBER_OF_ROOMS=3;
+    protected ArrayList<Room> rooms;
+    protected int floorNumber;
 
     public Floor(int floorNumber) {
         this.rooms = new ArrayList<>();
@@ -33,4 +32,26 @@ public class Floor{
         this.floorNumber = floorNumber;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Floor)) return false;
+        Floor floor = (Floor) o;
+        return floorNumber == floor.floorNumber &&
+                Objects.equals(rooms, floor.rooms);
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(rooms, floorNumber);
+    }
+
+    @Override
+    public String toString() {
+        return "Floor{" +
+                "rooms=" + rooms +
+                ", floorNumber=" + floorNumber +
+                '}';
+    }
 }

@@ -8,12 +8,12 @@ import HostelProject.Students.Student;
 
 import java.util.ArrayList;
 
-public class Commandant extends Human implements Administration {
+public class Commandant extends Human{
 
     public Commandant(String name) {
         super(name);
     }
-    //Заселение
+
     public void populate(Hostel hostel, ArrayList <Student> studentsList){
 
         int i = 0;
@@ -23,7 +23,7 @@ public class Commandant extends Human implements Administration {
                 {
                     if(i==studentsList.size())
                     {
-                        System.out.println("Студенты были заселены!");
+                        System.out.println("Students were populate!");
                         return;
                     }
                     else {
@@ -31,7 +31,7 @@ public class Commandant extends Human implements Administration {
                         room.getStudents().add(studentsList.get(i));
                         int nowNumberStudents = currentNumberStudents + 1;
                         room.setNumberStudent(nowNumberStudents);
-                        System.out.println("Студент был заселен в комнату номер: " + "Номер комнаты" + room.getRoomNumber() + "Картачка" + studentsList.get(i).getBadgeNumber() + "Количество в комнате" + room.getNumberStudent());
+                        System.out.println("Room №" + room.getRoomNumber()+ "Number of students per room - " + room.getNumberStudent());
                         i++;
                     }
                 }
@@ -40,24 +40,23 @@ public class Commandant extends Human implements Administration {
 
     }
 
-    //Выселять
     public void eviction(Room room, Student delinquentStudent, Security security)
     {
         security.evictionAssistance(delinquentStudent);
         delinquentStudent.setBadgeNumber(0);
         room.getStudents().remove(delinquentStudent);
         room.setNumberStudent(room.getNumberStudent()-1);
-        System.out.println("Долбоеб отлетевший"+delinquentStudent.getName()+ "Текущее количество в комнате "+room.getNumberStudent());
+        System.out.println("Eviction student"+delinquentStudent.getName()+ "Current number of students per room "+room.getNumberStudent());
         for (Student student:room.getStudents()) {
-            System.out.println("Имя уцелевших"+student.getName());
+            System.out.println("Student on the room:"+student.getName());
         }
     }
-    //Возвращаем лист залетных
+
     public ArrayList<Student> checkPaymentAndRemarks (ArrayList <Student> studentsList)
     {
         ArrayList <Student> delinquentStudent = new ArrayList<>();
         for (Student currentStudent : studentsList) {
-            if (!currentStudent.isPayment() || currentStudent.getRemarks() > 1) {
+            if (!currentStudent.isPayment() || currentStudent.getRemarks() > 1 || currentStudent.getCourse() > 4) {
                 delinquentStudent.add(currentStudent);
             }
         }

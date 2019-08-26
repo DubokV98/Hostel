@@ -28,17 +28,16 @@ public class HostelLife {
         hostel = initialize.initializeHostel();
         studentsList = initialize.createNewStudentArray();
 
-        commandant.populate(hostel, studentsList);//Заселение
+        commandant.populate(hostel, studentsList);
 
         studentsList = hostel.allStudentInRoom();
-        security.badgeCheck(studentsList);//Проверка на входе студентов
+        security.badgeCheck(studentsList);//Checking students at the entrance
 
-        //Проживание студентов
         for(Student student:studentsList) {
             student.livesOnRoom();
         }
 
-        studentsList = commandant.checkPaymentAndRemarks(hostel.allStudentInRoom());//Проверка на оплату и замечания
+        studentsList = commandant.checkPaymentAndRemarks(hostel.allStudentInRoom());
         if(!studentsList.isEmpty()) {
             for (Student student: studentsList) {
                 room = room.getRoomByNumber(hostel,student.getBadgeNumber());
@@ -46,11 +45,9 @@ public class HostelLife {
             }
         }
 
-        //создание старост
         roomsList = hostel.allRoomInHostel();
         wardensList = initialize.createNewWarden(hostel);
 
-        //Проверка состояния старостой (комнат и студентов)
         for (Warden warden:wardensList) {
             floor = hostel.floorWhereWardenLive(warden.getBadgeNumber());
             warden.roomWalkAndCheckCondition(floor);

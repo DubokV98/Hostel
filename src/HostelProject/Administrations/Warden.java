@@ -6,13 +6,9 @@ import HostelProject.Students.Student;
 
 import java.util.ArrayList;
 
-public class Warden extends Student implements Administration {
+public class Warden extends Student{
 
     public Warden(){}
-
-   /* public Warden(String name, boolean study, boolean payment, int remarks, String badgeNumber, boolean wardenFloor, String condition) {
-        super(name, study, payment, remarks, badgeNumber, wardenFloor, condition);
-    }*/
 
    public Warden(Student student)
    {
@@ -45,5 +41,5 @@ public class Warden extends Student implements Administration {
                 }
             }
         }
-    }//Обход комнат
+    }
 }

@@ -6,11 +6,11 @@ import java.util.ArrayList;
 
 public class Room {
 
-    public static final int NUMBER_OF_STUDENT = 3;//Количество студентов максимальное
-    ArrayList<Student> students;//Агрегация
-    int numberStudent;//Количество студентов в комнате на данный момент
-    String condition; // Состояние комнаты, грязная и т.д.
-    int roomNumber;//Номер комнаты
+    public static final int NUMBER_OF_STUDENT = 3;
+    protected ArrayList<Student> students;
+    protected int numberStudent;
+    protected String condition;
+    protected int roomNumber;
 
     public Room(){}
 
